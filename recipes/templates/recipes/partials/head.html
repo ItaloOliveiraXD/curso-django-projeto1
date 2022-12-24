@@ -14,7 +14,9 @@
 
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300&family=Rajdhani:wght@500&family=Roboto+Slab:wght@900&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300&family=Rajdhani:wght@500&family=Roboto+Slab:wght@900&display=swap"
+        rel="stylesheet">
 
     <title>Recipes</title>
 
@@ -77,9 +79,15 @@
             font-size: 1.6rem;
             font-family: var(--font-primary);
             background: var(--color-gray-1);
+            color: var(--color-dark-text);
         }
 
-        h1, h2, h3, h4, h5, h6 {
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
             font-family: var(--font-headings);
         }
 
@@ -152,11 +160,106 @@
         .search-form:focus-within {
             border-color: var(--color-primary);
             background: var(--color-white);
-            box-shadow: 1px 1px 1px 1px var(--color-primary);
+            box-shadow: -2px 2px 20px var(--color-primary);
         }
 
         .search-form:focus-within .search-button {
             color: var(--color-primary);
+        }
+
+        .main-content {
+            padding-top: 0;
+        }
+
+        .main-content-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+            gap: var(--spacing-gutter-large);
+        }
+
+        .recipe {
+            background: var(--color-white);
+            box-shadow: -5px 5px 10px rgba(0, 0, 0, .2);
+            transform: scale(1);
+            transition: all 300ms ease-in-out;
+            border-radius: .4rem;
+            overflow: hidden;
+        }
+
+        .recipe img {
+            max-width: 100%;
+
+        }
+
+        .recipe-list-item {
+            max-width: 64rem;
+        }
+
+        .recipe-list-item:hover {
+            transform: scale(1.02);
+            box-shadow: -8px 8px 18px rgba(0, 0, 0, .3);
+        }
+
+        .recipe-title-container {
+            padding: var(--spacing-gutter-medium);
+            padding-bottom: calc(var(--spacing-gutter-medium) / 2);
+        }
+
+        .recipe-author {
+            padding: 0 var(--spacing-gutter-medium);
+        }
+
+        .recipe-author a {
+            color: var(--color-primary);
+            text-decoration: none;
+            transition: all 300ms ease-in-out;
+        }
+
+        .recipe-author a:hover {
+            color: var(--color-primary-dark);
+        }
+
+        .recipe-content {
+            padding: var(--spacing-gutter-medium);
+            padding-top: calc(var(--spacing-gutter-medium) / 2);
+        }
+
+        .recipe-author-item {
+            color: var(--color-gray-4);
+            margin-right: 1rem;
+        }
+
+        .recipe-meta-container {
+            display: flex;
+            flex-flow: row wrap;
+            padding: var(--spacing-gutter-medium);
+            background: var(--color-gray-1);
+        }
+
+        .recipe-meta {
+            display: flex;
+            flex-flow: column nowrap;
+            flex-shrink: 1;
+            flex-grow: 1;
+            text-align: center;
+        }
+
+        .recipe-meta-title {
+            font-size: 1.6rem;
+        }
+
+        .recipe-footer a {
+            background: var(--color-primary-dark);
+            display: block;
+            text-align: center;
+            color: var(--color-white);
+            text-decoration: none;
+            padding: calc(var(--spacing-gutter-medium) / 2);
+            transition: all 300ms ease-in-out;
+        }
+
+        .recipe-footer a:hover {
+            filter: brightness(2);
         }
     </style>
 </head>
