@@ -1,19 +1,11 @@
+{% extends 'global/base.html' %}
 
-{% include 'recipes/partials/head.html' %}
+{% block title %} Alterar {% endblock title %}
 
-<body>
-    {% include 'recipes/partials/header.html' %}
+{% block content %}
 
-    {% include 'recipes/partials/search.html' %}
+    <div class="main-content main-content-detail container">
+        {% include 'recipes/partials/recipe.html' %}
+    </div>
 
-    <main class="main-content-container">
-        <div class="main-content main-content-detail container">
-
-            {% include 'recipes/partials/recipe.html' %}
-
-        </div>
-    </main>
-
-    {% include 'recipes/partials/footer.html' %}
-</body>
-</html> 
+{% endblock content %}
