@@ -5,28 +5,32 @@ from .test_base_recipe import RecipeTestBase
 
 class RecipesViewsTest(RecipeTestBase):
     def test_recipes_home_view_function_is_correct(self):
-        view = resolve(reverse('recipes:home'))
+        url = reverse('recipes:home')
+        view = resolve(url)
         self.assertIs(view.func, views.home)
 
     def test_recipes_home_view_returns_status_code_200_ok(self):
-        response = self.client.get(reverse('recipes:home'))
+        url = reverse('recipes:home')
+        response = self.client.get(url)
         self.assertEqual(response.status_code, 200)
 
     def test_recipes_home_loads_correct_template(self):
-        response = self.client.get(reverse('recipes:home'))
+        url = reverse('recipes:home')
+        response = self.client.get(url)
         self.assertTemplateUsed(response, 'recipes/pages/home.html')
 
     def test_recipes_home_template_show_no_recipes_found_is_no_recipes(self):
-        response = self.client.get(reverse('recipes:home'))
+        url = reverse('recipes:home')
+        response = self.client.get(url)
         self.assertIn(
             '<h1>No recipes found here 😢</h1>',
             response.content.decode('utf-8')
         )
 
     def test_recipes_home_template_load_recipes(self):
-
         self.make_recipe()
-        response = self.client.get(reverse('recipes:home'))
+        url = reverse('recipes:home')
+        response = self.client.get(url)
         context = response.context['recipes']
         content = response.content.decode('utf-8')
 
@@ -34,9 +38,9 @@ class RecipesViewsTest(RecipeTestBase):
         self.assertIn('Recipe title', content)
 
     def test_recipes_home_template_not_load_if_is_published_false(self):
-
         self.make_recipe(is_published=False)
-        response = self.client.get(reverse('recipes:home'))
+        url = reverse('recipes:home')
+        response = self.client.get(url)
         content = response.content.decode('utf-8')
 
         self.assertIn(
@@ -113,3 +117,8 @@ class RecipesViewsTest(RecipeTestBase):
         response = self.client.get(reverse('recipes:recipe', kwargs={'id': recipe.id}))  # noqa: E501
 
         self.assertEqual(response.status_code, 404)
+
+    def test_recipe_search_uses_correct_view_function(self):
+        url = reverse('recipes:search')
+        resolved = resolve(url)
+        self.assertIs(resolved.func, views.search)
